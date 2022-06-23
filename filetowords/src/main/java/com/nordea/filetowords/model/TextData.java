@@ -1,27 +1,22 @@
 package com.nordea.filetowords.model;
 
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import javax.xml.bind.annotation.*;
-import java.util.HashMap;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
-import java.util.Map;
 
 @Component
-@XmlRootElement(name="text")
+@Data
+@XmlRootElement(name = "text")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TextData {
 
 
-    public List<Sentence> getSentenceList() {
-        return sentenceList;
-    }
-
-    public void setSentenceList(List<Sentence> sentenceList) {
-        this.sentenceList = sentenceList;
-    }
-
-    @XmlElement(name="sentence")
+    @XmlElement(name = "sentence")
     private List<Sentence> sentenceList;
 }

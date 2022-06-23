@@ -2,9 +2,9 @@ package com.nordea.filetowords.util;
 
 public class Utility {
 
-    public static final String XML_FILE = "/XML/generatedFile.xml";
+    public static final String XML_FILE = "generatedFile.xml";
 
-    public static final String CSV_FILE ="/CSV/generatedCsv.csv";
+    public static final String CSV_FILE = "generatedCsv.csv";
     public static final String REGEX_TO_SPLIT_SENTENCES = "((?<!.Mr|.Ms|Mrs)[.])|(<\\.|\\!|\\?)";
     public static final String REGEX_TO_REMOVE_SPL_CHARS = "[`~@#$%^&*()_|+-,\\-=;:\"“\"<>\\{\\}\\[\\]\\\\\\/]";
     public static final String EMPTY_STRING = " ";

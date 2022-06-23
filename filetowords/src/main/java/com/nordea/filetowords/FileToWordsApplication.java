@@ -16,37 +16,39 @@ import java.util.Scanner;
 @SpringBootApplication
 public class FileToWordsApplication {
 
-	@Autowired
-	private static FileToWordServiceImpl fileToWordServiceImpl = new FileToWordServiceImpl();
-	private static final Logger log =  LoggerFactory.getLogger(FileToWordsApplication.class);
+    @Autowired
+    private static FileToWordServiceImpl fileToWordServiceImpl = new FileToWordServiceImpl();
+    private static final Logger log = LoggerFactory.getLogger(FileToWordsApplication.class);
 
 
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-		try {
-			System.out.println("Enter the absolute path to the file(till file name) : ");
-			Scanner scanner = new Scanner(System.in);
-			String inputFilePath = scanner.nextLine().trim();
-			System.out.println("Entered path is : " + inputFilePath);
 
-			if(inputFilePath.length()==0)
-			{
-				System.out.println("File is empty!");
-				log.info("Provided file is empty!");
-			}
-			else {
-				String outputFilePath = fileToWordServiceImpl.generateXML(fileToWordServiceImpl.computeLines(new File(inputFilePath)));
-				System.out.println("File is generated and saved in code project folder! "+outputFilePath);
-			}
+        try {
+            System.out.println("Enter the absolute path to the file(till file name) : ");
+            Scanner scanner = new Scanner(System.in);
+            String inputFilePath = scanner.nextLine().trim();
+            System.out.println("Entered path is : " + inputFilePath);
 
-		}
-		catch(NoSuchFileException exception)
-		{
-			System.out.println("Error no file found in provide path!!!");
-			log.error("Error in loading file from provided path : "+ exception.getMessage(), exception );
-		}
 
-		SpringApplication.run(FileToWordsApplication.class, args);
-	}
+            if (inputFilePath.length() == 0) {
+                System.out.println("File is empty!");
+                log.info("Provided file is empty!");
+            } else {
+
+                String outputFilePath = fileToWordServiceImpl.generateXML(fileToWordServiceImpl.computeLines(new File(inputFilePath)));
+                System.out.println("File is generated and saved in code project folder : " + "\n" + outputFilePath);
+
+            }
+
+        } catch (NoSuchFileException exception) {
+            System.out.println("Error no file found in provide path!!!");
+            log.error("Error in loading file from provided path : " + exception.getMessage(), exception);
+        } catch (IOException e) {
+            log.error("Error in loading file : " + e.getMessage(), e);
+        }
+
+        SpringApplication.run(FileToWordsApplication.class, args);
+    }
 
 }
