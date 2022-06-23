@@ -1,0 +1,17 @@
+<configuration debug="false">
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <file>${LOGGER_PATH}/logs/filetowords.log</file>
+  <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+  <fileNamePattern>/fileformatword-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+        <maxFileSize>20MB</maxFileSize>
+        <maxHistory>50</maxHistory>
+        <totalSizeCap>100GB</totalSizeCap>
+    </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
